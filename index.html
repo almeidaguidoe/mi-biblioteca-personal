@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- GOOGLE FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Quintessential&display=swap" rel="stylesheet">
+        
+        <!-- FONT AWESOME -->
+        <script src="https://kit.fontawesome.com/3b60c42785.js" crossorigin="anonymous"></script>
+
+        <!--ICONO DE LA PÁGINA-->
+        <link rel="icon" type="image/x-icon" href="./img/icono.png">
+
+        <link rel="stylesheet" href="css/styles.css">
+
+        <title>Biblioteca Personal de Guido Almeida</title>
+    </head>
+    <body>
+        <header>
+            <h1>Mi Biblioteca Personal</h1>
+        </header>
+
+        <main>
+            <!-- Formulario de alta y edicion -->
+            <div id="form-libro_contenedor" class="oculto">
+                <section id="formulario-libro">
+                <h2 id="titulo-formulario"></h2>
+
+                <form id="libro-form">
+                    <input type="hidden" id="libro-id">
+
+                    <!-- titulo -->
+                    <div>
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo">
+                    </div>
+
+                    <small class="error" id="error-titulo"></small>
+
+                    <!-- autor -->
+                    <div>
+                        <label for="autor">Autor</label>
+                        <input type="text" id="autor">
+                        
+                    </div>
+
+                    <small class="error" id="error-autor"></small>
+
+                    <!-- genero -->
+                    <div>
+                        <label for="genero">Género</label>
+                        <input type="text" id="genero">
+                        
+                    </div>
+
+                    <small class="error" id="error-genero"></small>
+
+                    <!-- año -->
+                    <div>
+                        <label for="anio">Año</label>
+                        <input type="text" id="anio">
+                        
+                    </div>
+
+                    <small class="error" id="error-anio"></small>
+
+                    <!-- leido no leido-->
+                    <div>
+                        <label class="checkbox-leido">
+                            <input type="checkbox" id="leido">
+                            Leído
+                        </label>
+                    </div>
+
+                    <button type="submit">Guardar libro</button>
+                </form>
+                <div id="mensaje" class="mensaje"></div>
+                </section>
+                <i class="fa-solid fa-xmark" id="libro-form__icono-cerrar"></i>
+            </div>
+            
+
+            <!-- Filtros y búsqueda -->
+            <section id="filtros">
+                <h2>Buscar y filtrar</h2>
+
+                <div class="buscar-leido__cont">
+                    <input type="text" id="buscar-titulo" placeholder="Buscar por título">
+
+                    <select id="filtro-leido">
+                        <option value="">Todos</option>
+                        <option value="1">Leídos</option>
+                        <option value="0">No leídos</option>
+                    </select>
+                </div>
+                
+             </section>
+
+            <!-- Listado de libros -->
+            <section id="listado-libros">
+                <div class="ll_titulo-btn_cont">
+                    <h2>Listado de libros</h2>
+                    <button id="btn-agregar-libro">Agregar libro</button>
+                </div>
+
+                <div class="listado-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Género</th>
+                                <th>Año</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-libros">
+                            <!-- Render dinámico con JS -->
+                        </tbody>
+                    </table>
+                </div>
+                
+            </section>
+        </main>
+
+        <footer>
+            <span>Desarrollado por: Guido Almeida</span>
+        </footer>
+
+        <script type="module" src="js/main.js"></script>
+    </body>
+</html>
