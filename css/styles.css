@@ -1,0 +1,401 @@
+/* paleta de colores:
+
+#6F1D1B (dark wine)
+#BB9457 (Camel)
+#432818 (Dark Coffee)
+#99582A (Chocolate Brown)
+#FFE6A7 (Light Apricot)
+
+fuentes:
+
+
+texto general | font-family: "Alumni Sans Pinstripe", sans-serif;
+titulos | font-family: "Quintessential", serif;
+
+
+*/
+
+:root {
+    /* colores */
+    --fondo-principal: #FFE6A7;
+    --fondo-secundario: #BB9457;
+    --highlight: #6F1D1B;
+    --elemento-principal: #432818;
+    --elemento-secundario: #99582A;
+    --font_texto-gral: "Alumni Sans Pinstripe", sans-serif;
+    --font_titulos: "Quintessential", serif;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font_texto-gral);
+    font-weight: 600;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background: var(--fondo-principal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+}
+
+main {
+    width: min(100rem, 100%);
+    
+    flex: 1;
+}
+
+/* TITULO */
+
+header {
+    border-bottom: 3px solid var(--elemento-secundario);
+    width: min(100rem, 100%);
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    font-family: var(--font_titulos);
+    padding: min(1rem, 5%);
+    font-size: clamp(2rem, 0.7rem + 5vw, 5rem);
+    color: var(--elemento-principal);
+}
+
+
+
+/* BUSCAR Y FILTRAR */
+
+#filtros {
+    padding: 0.8rem;
+    background-color: var(--fondo-secundario);
+}
+
+#filtros h2 {
+    font-family: var(--font_titulos);
+    font-weight: 400;
+    font-size: clamp(1rem, 1.5rem + 0.8vw, 3rem);
+    margin-bottom: 0.8rem;
+    color: #fff;
+}
+
+.buscar-leido__cont {
+    height: 3.2rem;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#buscar-titulo {
+    width: 80%;
+    height: 100%;
+    border: none;
+    padding: min(0.8rem, 1%);
+    background-color: var(--fondo-principal);
+    font-size: calc(1rem + 0.8vw);
+    color: var(--elemento-secundario);
+    border: 3px solid rgba(0, 0, 0, 0);
+
+    transition: .3s ease border;
+}
+
+#buscar-titulo:focus-visible {
+    outline: none;
+    border-left: 3px solid var(--highlight);
+    border-bottom: 3px solid var(--highlight);
+}
+
+#filtro-leido {
+    width: 20%;
+    height: 100%;
+    border: none;
+    font-size: calc(1rem + 0.5vw);
+    padding: min(0.4rem, 1%);
+    border: 3px solid rgba(0, 0, 0, 0);
+
+    transition: .3s ease border;
+}
+
+#filtro-leido:focus {
+    outline: none;
+    border: 3px solid var(--highlight);
+}
+
+
+/* LISTADO DE LIBROS */
+
+#listado-libros {
+    padding: min(1rem, 2%);
+    display: flex;
+    flex-direction: column;
+    gap: min(0.8rem, 1vw);
+}
+
+.ll_titulo-btn_cont {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#listado-libros h2 {
+    font-family: var(--font_titulos);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+}
+
+.ll_titulo-btn_cont button {
+    border: none;
+    padding: min(0.8rem, 2%);
+    font-size:calc(1rem + 1vw);
+    background-color: var(--elemento-secundario);
+    color: #fff;
+    cursor: pointer;
+    transition: .3s ease background-color;
+}
+
+.ll_titulo-btn_cont button:hover {
+    background-color: var(--highlight);
+}
+
+.listado-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+table {
+    width: 100%;
+    /*border-collapse: collapse;*/
+}
+
+thead {
+    border: none;
+    font-size: calc(1.5rem + 0.5vw);
+    background-color: var(--elemento-principal);
+    color: #fff;
+}
+
+th {
+    padding: min(0.4rem, 2vw);
+
+}
+
+tbody {
+    font-size: calc(1.2rem + 0.5vw);
+    width: 100%;
+}
+
+td {
+    padding: 0.4rem;
+    height: auto;
+    border-bottom: 2px solid var(--elemento-secundario);
+
+}
+
+.list_celdas-acciones {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+}
+
+td button {
+    flex: 1;
+    /*white-space: nowrap;*/
+    text-align: center;
+    padding: min(0.4rem, 1vw);
+    border: none;
+    height: 100%;
+    font-size: calc(0.8rem + 0.5vw);
+    background-color: var(--fondo-secundario);
+    cursor: pointer;
+    transition: .3s ease background-color, .3s ease color;
+}
+
+td button:hover {
+    background-color: var(--highlight);
+    color: #fff;
+}
+
+
+/* ------------- FORMULARIO DE LIBRO ------------ */
+
+
+
+#form-libro_contenedor {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.8);
+    z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 1;
+    overflow-x: hidden;
+    
+    overflow-y: auto;
+    transition: opacity .5s ease, height .5s ease-out;
+}
+
+#form-libro_contenedor.oculto {
+    opacity: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+#formulario-libro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: min(70rem, 100%);
+    background-color: var(--fondo-secundario);
+    padding: min(1rem, 5%);
+}
+
+#formulario-libro h2 {
+    font-family: var(--font_titulos);
+    font-size: calc(2rem + 1vw);
+    text-align: center;
+    border-bottom: 3px solid var(--elemento-secundario);
+    padding: min(0.5rem, 2%);
+}
+
+#libro-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+#libro-form div {
+    width: 100%;
+    padding: min(0.8rem, 1vw);
+    display: flex;
+    justify-content: center;
+}
+
+#libro-form div label {
+    width: 30%;
+    font-size: calc(2rem + 1vw);
+}
+
+#libro-form div input {
+    height: 100%;
+    border: none;
+    flex: 1;
+    padding: min(1rem, 2%);
+    font-size: calc(1.5rem + 1vw);
+    border: 3px solid rgba(0, 0, 0, 0);
+
+    transition: .3s ease border, .5s ease background-color;
+}
+
+#libro-form div input:focus {
+    border: 3px solid var(--highlight);
+    outline: none;
+    background-color: var(--fondo-principal);
+}
+
+.checkbox-leido {
+    width: 6rem!important;
+    line-height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#leido {
+    width: 1.2rem!important;
+    aspect-ratio: 1/1;
+    accent-color: var(--highlight);
+}
+
+#libro-form button {
+    font-size: calc(1.4rem + 2vw);
+    padding: min(1rem, 2%);
+    border: none;
+    background-color: var(--elemento-secundario);
+    color: #fff;
+    cursor: pointer;
+    transition: .3s ease background-color;
+}
+
+#libro-form button:hover {
+    background-color: var(--highlight);
+}
+
+#libro-form__icono-cerrar {
+    position: absolute;
+    color: #ffffff;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: .3s ease color;
+}
+
+#libro-form__icono-cerrar:hover {
+    color: var(--fondo-principal);
+}
+
+/* MENSAJES DE EXITO O ERROR */
+
+.mensaje {
+    padding: 0.8rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.mensaje.ok {
+    color: #155724;
+}
+
+.mensaje.error {
+    color: #721c24;
+}
+
+small.error {
+    color: #b00020;
+    font-size: 2rem;
+}
+
+/* FOOTER */
+
+footer {
+    width: 100%;
+    background-color: var(--elemento-principal);
+    padding: 1rem;
+}
+
+footer span {
+    font-family: "Alumni Sans Pinstripe", sans-serif;
+    font-size: 2rem;
+    color: #fff;
+}
+
+@media (max-width:800px) {
+    .list_celdas-acciones {
+        flex-flow: row wrap;
+    }
+}
+
+@media (max-width:450px) {
+    #buscar-titulo {
+        width: 70%;
+    }
+
+    #filtro-leido {
+        width: 30%;
+    }
+}
+
